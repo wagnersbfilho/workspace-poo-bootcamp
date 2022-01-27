@@ -12,15 +12,15 @@ public class Dev {
 	private Set<Conteudo> conteudosConcluidos;
 	
 	public void inscreverBootcamp (Bootcamp bootcamp) {
-		this.conteudosInscritos.addAll(bootcamp.getConteudos());
+		getConteudosInscritos().addAll(bootcamp.getConteudos());
 		bootcamp.getDevInscritos().add(this);
 	}
 	
 	public void progredir() {
 		Optional<Conteudo> conteudo= this.conteudosInscritos.stream().findFirst();
 		if (conteudo.isPresent()) {
-			this.conteudosConcluidos.add(conteudo.get());
-			this.conteudosInscritos.remove(conteudo.get());
+			this.getConteudosConcluidos().add(conteudo.get());
+			this.getConteudosInscritos().remove(conteudo.get());
 		} else {
 			System.out.println("Você não está matriclado em nenhum conteúdo!");
 		}
